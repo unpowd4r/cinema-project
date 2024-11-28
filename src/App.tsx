@@ -1,35 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './index.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+	return (
+		<section className='min-h-screen pb-10'>
+			<nav className='fixed top-0 left-0 h-screen w-44 bg-zinc-800 text-white flex flex-col justify-between items-center'>
+				<ul className='h-1/2 flex flex-col justify-between mt-5 items-center'>
+					<li>home</li>
+					<li>profile</li>
+					<li>settings</li>
+					<li>history</li>
+					<li>search</li>
+				</ul>
+				<div className='pb-5'>exit logo</div>
+			</nav>
+			<header className='ml-20 pt-10 absolute top-0 right-0 left-44 flex items-start '>
+				<h1 className=' text-blue-50 font-medium'>My cinema</h1>
+			</header>
+			<section className='w-full pt-40'>
+				<div className='w--full flex justify-center gap-20 mb-20'>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>All</button>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>Comedy</button>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>Fantasy</button>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>Drama</button>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>History</button>
+					<button className='h-16 w-40 bg-zinc-800 rounded-3xl'>Horror</button>
+				</div>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+				<div className=' flex justify-center gap-24 mb-10'>
+					<div className=' bg-zinc-800 min-h-96 w-1/2 rounded-3xl'></div>
+					<div className='bg-zinc-800 min-h-60 w-80 rounded-3xl'></div>
+				</div>
+				<div className='flex justify-start ml-64 mb-10'>
+					<h3 className='text-3xl font-medium'>Special for you</h3>
+				</div>
+				<div className='flex justify-center gap-20'>
+					<div>
+						<div className='w-72 h-40 bg-zinc-800 rounded-3xl mb-5'></div>
+						<div className='flex justify-between'>
+							<div>FilmName</div> <div>Year</div> <div>rating</div>
+						</div>
+					</div>
+					<div>
+						<div className='w-72 h-40 bg-zinc-800 rounded-3xl mb-5'></div>
+						<div className='flex justify-between'>
+							<div>FilmName</div> <div>Year</div> <div>rating</div>
+						</div>
+					</div>
+					<div>
+						<div className='w-72 h-40 bg-zinc-800 rounded-3xl mb-5'></div>
+						<div className='flex justify-between'>
+							<div>FilmName</div> <div>Year</div> <div>rating</div>
+						</div>
+					</div>
+					<div>
+						<div className='w-72 h-40 bg-zinc-800 rounded-3xl mb-5'></div>
+						<div className='flex justify-between'>
+							<div>FilmName</div> <div>Year</div> <div>rating</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+	)
 }
 
 export default App
