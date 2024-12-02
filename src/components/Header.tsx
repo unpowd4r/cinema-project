@@ -1,3 +1,4 @@
+import logoutIcon from '../assets/icons/logout.svg'
 import { HeaderNav } from './Header/HeaderNav/HeaderNav'
 
 export const Header = () => {
@@ -7,7 +8,7 @@ export const Header = () => {
 				<HeaderNav />
 				<div className='pb-5'>
 					<a className='transition-colors hover:text-amber-600' href='#'>
-						exit logo
+						<img src={logoutIcon} alt='logout' className='w-12' />
 					</a>
 				</div>
 			</nav>
