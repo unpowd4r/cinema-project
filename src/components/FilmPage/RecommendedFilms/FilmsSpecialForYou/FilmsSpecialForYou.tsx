@@ -1,7 +1,7 @@
 import { CardFilm } from '../../../CardFilm/CardFilm'
 import { generateCardInfo } from '../../../HomePage/HomePage'
 
-const CardInfo = generateCardInfo(3)
+const CardInfo = generateCardInfo(4)
 
 export const FilmsSpecialForYou = () => {
 	return (

@@ -1,16 +1,12 @@
-import { FilmPage } from './components/FilmPage/FilmPage'
+import { Outlet } from 'react-router'
 import { Header } from './components/Header'
-import { HomePage } from './components/HomePage/HomePage'
 import './index.css'
 
-function App() {
+export function App() {
 	return (
 		<div className='min-h-screen pb-10'>
 			<Header />
-			<FilmPage />
-			<HomePage />
+			<Outlet />
 		</div>
 	)
 }
-
-export default App

@@ -1,6 +1,7 @@
 import { CardFilm } from '../CardFilm/CardFilm'
+import { CategoriesButtons } from '../FilmPage/CategoriesButtons/CategoriesButtons'
 
-const generateCardInfo = (count: number) => {
+export const generateCardInfo = (count: number) => {
 	return Array.from({ length: count }, (_, index) => ({
 		id: index + 1,
 		FilmName: 'FilmName',
@@ -13,7 +14,8 @@ const CardInfo = generateCardInfo(12)
 
 export const HomePage = () => {
 	return (
-		<div className='flex flex-wrap gap-20 ml-64'>
+		<div className='flex flex-wrap gap-20 ml-64 pt-40'>
+			<CategoriesButtons />
 			{CardInfo.map(ci => (
 				<CardFilm
 					key={ci.id}
