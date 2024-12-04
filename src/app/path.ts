@@ -1,4 +1,4 @@
 export const PATH = {
-	START_PAGE: '/',
+	HOME_PAGE: '/',
 	FILM_PAGE: 'film-page',
 }

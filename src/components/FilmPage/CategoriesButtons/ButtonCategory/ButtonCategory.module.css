@@ -1,0 +1,3 @@
+.category {
+	@apply flex justify-center items-center h-16 w-40 bg-zinc-800 rounded-3xl transition-all duration-150 ease-linear hover:bg-orange-600 hover:scale-110;
+}

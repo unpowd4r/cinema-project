@@ -1,11 +1,15 @@
+import { NavLink } from 'react-router'
+import styles from './ButtonCategory.module.css'
+
 type Props = {
 	title: string
+	path: string
 }
 
-export const ButtonCategory = ({ title }: Props) => {
+export const ButtonCategory = ({ title, path }: Props) => {
 	return (
-		<button className='h-16 w-40 bg-zinc-800 rounded-3xl transition-all duration-150 ease-linear hover:bg-orange-600 hover:scale-110'>
+		<NavLink className={styles.category} to={path}>
 			{title}
-		</button>
+		</NavLink>
 	)
 }

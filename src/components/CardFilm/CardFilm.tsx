@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router'
 import { PATH } from '../../app/path'
+import { useGetInfoForFilmQuery } from '../HomePage/apiHomePage/apiHomePage'
+import { Loader } from '../loader/Loader'
 
 type Props = {
 	filmName: string
@@ -16,14 +18,21 @@ export const CardFilm = ({
 	filmImage,
 	filmId,
 }: Props) => {
+	const { isLoading: isInfoLoading } = useGetInfoForFilmQuery({
+		id: filmId,
+	})
 	return (
 		<NavLink to={`/${PATH.FILM_PAGE}/${filmId}`}>
 			<div className='h-96 w-72 bg-zinc-800 rounded-3xl mb-5  transition duration-150 hover:scale-110'>
-				<img
-					src={filmImage}
-					alt={filmName}
-					className=' h-96 w-72 rounded-3xl hover:border-4 border-zinc-500'
-				/>
+				{isInfoLoading ? (
+					<Loader />
+				) : (
+					<img
+						src={filmImage}
+						alt={filmName}
+						className=' h-96 w-72 rounded-3xl hover:border-4 border-zinc-500'
+					/>
+				)}
 			</div>
 			<div className='flex items-baseline flex-col gap-3'>
 				<div>
