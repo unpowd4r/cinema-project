@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { ButtonPagination } from './ButtonPagination/ButtonPagination'
 
 type Props = {
 	page: number
@@ -13,40 +14,16 @@ export const Pagination = ({
 	page,
 	isLoading,
 }: Props) => {
-	const handleNextPage = () => {
-		if (page && currentPage < page) {
-			setCurrentPage(prevPage => prevPage + 1)
-		}
-	}
-
-	const handlePrevPage = () => {
-		if (currentPage > 1) {
-			setCurrentPage(prevPage => prevPage - 1)
-		}
-	}
-
 	return (
 		<>
-			{isLoading ? (
+			{isLoading && (
 				<div className='flex justify-evenly mt-5 w-full'>
-					<button
-						onClick={handlePrevPage}
-						disabled={currentPage === 1}
-						className='px-4 py-2 bg-orange-600 text-white rounded disabled:bg-gray-300'
-					>
-						Previous
-					</button>
-					<span>Page {currentPage}</span>
-					<button
-						onClick={handleNextPage}
-						disabled={page === currentPage}
-						className='px-4 py-2 bg-orange-600 text-white rounded disabled:bg-gray-300'
-					>
-						Next
-					</button>
+					<ButtonPagination
+						page={page}
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+					/>
 				</div>
-			) : (
-				<div></div>
 			)}
 		</>
 	)
