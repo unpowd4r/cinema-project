@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ReactPlayer from 'react-player'
 import { useParams } from 'react-router'
 import {
+	useGetFactsForFilmQuery,
 	useGetFilmByIdQuery,
 	useGetInfoForFilmQuery,
 } from '../HomePage/apiHomePage/apiHomePage'
@@ -21,7 +22,7 @@ export const FilmPage = () => {
 		id: filmId,
 	})
 
-	console.log(filmData?.items?.[0]?.url)
+	const { data: factsInfo } = useGetFactsForFilmQuery({ id: filmId })
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -51,9 +52,9 @@ export const FilmPage = () => {
 					)}
 				</div>
 				<div className='flex items-center justify-center flex-col gap-5 bg-zinc-800 h-svh w-1/3 rounded-3xl'>
-					<div>description</div>
-					<div>shortDescription</div>
-					<div>text</div>
+					<div>{infoData?.description}</div>
+					<div>{infoData?.shortDescription}</div>
+					<div>{factsInfo?.items?.text}</div>
 				</div>
 
 				{isModalOpen && (

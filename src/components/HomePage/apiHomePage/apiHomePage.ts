@@ -1,5 +1,10 @@
 import { baseApi } from '../../../app/baseApi'
-import { FilmInfo, FilmResponse, VideoResponse } from '../../../app/types/types'
+import {
+	FactsResponse,
+	FilmInfo,
+	FilmResponse,
+	VideoResponse,
+} from '../../../app/types/types'
 
 export const apiHomePage = baseApi.injectEndpoints({
 	endpoints: build => ({
@@ -30,6 +35,14 @@ export const apiHomePage = baseApi.injectEndpoints({
 				}
 			},
 		}),
+		getFactsForFilm: build.query<FactsResponse, { id: number }>({
+			query: ({ id }) => {
+				return {
+					url: `/${id}/facts`,
+					method: 'GET',
+				}
+			},
+		}),
 	}),
 })
 
@@ -37,4 +50,5 @@ export const {
 	useGetFilmOrCategoriesQuery,
 	useGetFilmByIdQuery,
 	useGetInfoForFilmQuery,
+	useGetFactsForFilmQuery,
 } = apiHomePage

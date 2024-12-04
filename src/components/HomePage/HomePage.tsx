@@ -1,15 +1,19 @@
 import { useState } from 'react'
+import { ApiError } from '../../app/types/errorTypes'
 import { CardFilm } from '../CardFilm/CardFilm'
+import { ErrorSnackBar } from '../ErrorSnackBar/ErrorSnackBar'
 import { CategoriesButtons } from '../FilmPage/CategoriesButtons/CategoriesButtons'
 import { useGetFilmOrCategoriesQuery } from './apiHomePage/apiHomePage'
 
 export const HomePage = () => {
 	const [currentPage, setCurrentPage] = useState(1)
 
-	const { data, isLoading } = useGetFilmOrCategoriesQuery({
+	const { data, isLoading, error } = useGetFilmOrCategoriesQuery({
 		type: 'TOP_POPULAR_ALL',
 		page: currentPage,
 	})
+
+	const typedError = error as ApiError | undefined
 
 	const handleNextPage = () => {
 		if (data?.totalPages && currentPage < data.totalPages) {
@@ -26,6 +30,7 @@ export const HomePage = () => {
 	return (
 		<div className='flex flex-wrap gap-20 ml-64 pt-40'>
 			<CategoriesButtons />
+
 			{isLoading
 				? Array.from({ length: 12 }).map((_, index) => (
 						<div
@@ -70,6 +75,7 @@ export const HomePage = () => {
 					Next
 				</button>
 			</div>
+			<ErrorSnackBar typedError={typedError} />
 		</div>
 	)
 }
