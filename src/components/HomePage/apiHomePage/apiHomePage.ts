@@ -12,36 +12,19 @@ export const apiHomePage = baseApi.injectEndpoints({
 			FilmResponse,
 			{ type: string; page: number }
 		>({
-			query: ({ type, page }) => {
-				return {
-					url: `collections?type=${type}&page=${page}`,
-					method: 'GET',
-				}
-			},
+			query: ({ type, page }) => ({
+				url: `collections?type=${type}&page=${page}`,
+				method: 'GET',
+			}),
 		}),
 		getFilmById: build.query<VideoResponse, { id: number }>({
-			query: ({ id }) => {
-				return {
-					url: `${id}/videos`,
-					method: 'GET',
-				}
-			},
+			query: ({ id }) => ({ url: `${id}/videos`, method: 'GET' }),
 		}),
 		getInfoForFilm: build.query<FilmInfo, { id: number }>({
-			query: ({ id }) => {
-				return {
-					url: `/${id}`,
-					method: 'GET',
-				}
-			},
+			query: ({ id }) => ({ url: `/${id}`, method: 'GET' }),
 		}),
 		getFactsForFilm: build.query<FactsResponse, { id: number }>({
-			query: ({ id }) => {
-				return {
-					url: `/${id}/facts`,
-					method: 'GET',
-				}
-			},
+			query: ({ id }) => ({ url: `/${id}/facts`, method: 'GET' }),
 		}),
 	}),
 })
