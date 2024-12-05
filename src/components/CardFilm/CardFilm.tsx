@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { PATH } from '../../app/path'
 import { Loader } from '../loader/Loader'
+import { StarRating } from '../StarRating/StarRating'
 
 type Props = {
 	filmName: string
@@ -46,7 +47,7 @@ export const CardFilm = ({
 				</div>
 				<div className='w-72 flex justify-between'>
 					<span>{year}</span>
-					<span>{rating}</span>
+					<StarRating totalStars={5} rating={rating} />
 				</div>
 			</div>
 		</NavLink>
