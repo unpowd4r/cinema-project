@@ -6,6 +6,7 @@ import {
 	useGetFactsForFilmQuery,
 	useGetFilmByIdQuery,
 	useGetInfoForFilmQuery,
+	useGetSimilarsFimlsQuery,
 } from '../HomePage/apiHomePage/apiHomePage'
 import { Loader } from '../loader/Loader'
 import { CategoriesButtons } from './CategoriesButtons/CategoriesButtons'
@@ -24,6 +25,9 @@ export const FilmPage = () => {
 	})
 
 	const { data: factsInfo } = useGetFactsForFilmQuery({ id: filmId })
+
+	const { data: similarFilms, isLoading: isSimilarFilms } =
+		useGetSimilarsFimlsQuery({ id: filmId })
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -52,7 +56,7 @@ export const FilmPage = () => {
 						/>
 					)}
 				</div>
-				<div className='flex items-center justify-center flex-col gap-5 bg-zinc-800 min-h-svh w-1/3 rounded-3xl p-5'>
+				<div className='flex items-center justify-center flex-col gap-5 bg-zinc-800 min-h-svh w-1/3 rounded-3xl p-5 '>
 					<div className='mb-5'>
 						<h1 className='font-bold mb-5'>{infoData?.nameRu}</h1>
 						{infoData?.description && (
@@ -95,7 +99,10 @@ export const FilmPage = () => {
 					</div>
 				)}
 			</div>
-			<RecommendedFilms />
+			<RecommendedFilms
+				similarFilms={similarFilms}
+				isSimilarFilms={isSimilarFilms}
+			/>
 		</div>
 	)
 }

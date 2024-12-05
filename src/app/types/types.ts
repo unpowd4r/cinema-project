@@ -23,6 +23,21 @@ export type FactsResponse = {
 	items: FactItem[]
 }
 
+type FilmItemSimilars = {
+	filmId: number
+	nameRu: string
+	nameEn: string
+	nameOriginal: string
+	posterUrl: string
+	posterUrlPreview: string
+	relationType: string
+}
+
+export type FilmsResponseSimilars = {
+	total: number
+	items: FilmItemSimilars[]
+}
+
 type Response<T> = {
 	total: number
 	totalPages?: number

@@ -3,6 +3,7 @@ import {
 	FactsResponse,
 	FilmInfo,
 	FilmResponse,
+	FilmsResponseSimilars,
 	VideoResponse,
 } from '../../../app/types/types'
 
@@ -26,6 +27,9 @@ export const apiHomePage = baseApi.injectEndpoints({
 		getFactsForFilm: build.query<FactsResponse, { id: number }>({
 			query: ({ id }) => ({ url: `/${id}/facts`, method: 'GET' }),
 		}),
+		getSimilarsFimls: build.query<FilmsResponseSimilars, { id: number }>({
+			query: ({ id }) => ({ url: `/${id}/similars`, method: 'GET' }),
+		}),
 	}),
 })
 
@@ -34,4 +38,5 @@ export const {
 	useGetFilmByIdQuery,
 	useGetInfoForFilmQuery,
 	useGetFactsForFilmQuery,
+	useGetSimilarsFimlsQuery,
 } = apiHomePage

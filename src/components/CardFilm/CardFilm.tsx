@@ -6,8 +6,8 @@ import { StarRating } from '../StarRating/StarRating'
 
 type Props = {
 	filmName: string
-	year: string
-	rating: number
+	year?: string
+	rating?: number
 	filmImage: string
 	filmId: number
 	isLoading: boolean
@@ -47,7 +47,7 @@ export const CardFilm = ({
 				</div>
 				<div className='w-72 flex justify-between'>
 					<span>{year}</span>
-					<StarRating totalStars={5} rating={rating} />
+					<StarRating totalStars={5} rating={8} />
 				</div>
 			</div>
 		</NavLink>

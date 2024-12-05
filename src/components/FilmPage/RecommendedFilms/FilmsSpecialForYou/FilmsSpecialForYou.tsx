@@ -1,18 +1,27 @@
 // import { generateCardInfo } from '../../../HomePage/HomePage'
 
-// const CardInfo = generateCardInfo(4)
+import { FilmsResponseSimilars } from '../../../../app/types/types'
+import { CardFilm } from '../../../CardFilm/CardFilm'
 
-export const FilmsSpecialForYou = () => {
+type Props = {
+	similarFilms: FilmsResponseSimilars | undefined
+	isSimilarFilms: boolean
+}
+
+export const FilmsSpecialForYou = ({ similarFilms, isSimilarFilms }: Props) => {
 	return (
-		<div className='flex justify-center gap-20'>
-			{/* {CardInfo.map(ci => (
-				<CardFilm
-					key={ci.id}
-					FilmName={ci.FilmName}
-					Year={ci.Year}
-					Rating={ci.Rating}
-				/>
-			))} */}
+		<div className='flex justify-center overflow-x-auto scroll-smooth'>
+			<div className='flex justify-center gap-10 max-w-1/2 p-10 ml-20 '>
+				{similarFilms?.items.map(ci => (
+					<CardFilm
+						key={ci.filmId}
+						filmId={ci.filmId}
+						filmName={ci.nameRu}
+						filmImage={ci.posterUrl}
+						isLoading={isSimilarFilms}
+					/>
+				))}
+			</div>
 		</div>
 	)
 }
