@@ -7,12 +7,12 @@ type Props = {
 }
 
 export const ButtonPagination = ({
-	setCurrentPage,
-	currentPage,
 	page,
+	currentPage,
+	setCurrentPage,
 }: Props) => {
 	const handleNextPage = () => {
-		if (page && currentPage < page) {
+		if (currentPage < page) {
 			setCurrentPage(prevPage => prevPage + 1)
 		}
 	}
@@ -26,13 +26,13 @@ export const ButtonPagination = ({
 	const ButtonPag = [
 		{
 			id: 1,
-			handle: handleNextPage,
+			handle: handlePrevPage,
 			title: 'Previous',
 			disabled: currentPage === 1,
 		},
 		{
 			id: 2,
-			handle: handlePrevPage,
+			handle: handleNextPage,
 			title: 'Next',
 			disabled: page === currentPage,
 		},

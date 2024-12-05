@@ -1,6 +1,6 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { PATH } from '../../app/path'
-import { useGetInfoForFilmQuery } from '../HomePage/apiHomePage/apiHomePage'
 import { Loader } from '../loader/Loader'
 
 type Props = {
@@ -9,6 +9,7 @@ type Props = {
 	rating: number
 	filmImage: string
 	filmId: number
+	isLoading: boolean
 }
 
 export const CardFilm = ({
@@ -17,20 +18,25 @@ export const CardFilm = ({
 	rating,
 	filmImage,
 	filmId,
+	isLoading,
 }: Props) => {
-	const { isLoading: isInfoLoading } = useGetInfoForFilmQuery({
-		id: filmId,
-	})
+	const [imageLoaded, setImageLoaded] = useState(false)
+
+	const handleImageLoad = () => {
+		setImageLoaded(true)
+	}
+
 	return (
 		<NavLink to={`/${PATH.FILM_PAGE}/${filmId}`}>
 			<div className='h-96 w-72 bg-zinc-800 rounded-3xl mb-5  transition duration-150 hover:scale-110'>
-				{isInfoLoading ? (
+				{!imageLoaded && isLoading ? (
 					<Loader />
 				) : (
 					<img
 						src={filmImage}
 						alt={filmName}
 						className=' h-96 w-72 rounded-3xl hover:border-4 border-zinc-500'
+						onLoad={handleImageLoad}
 					/>
 				)}
 			</div>

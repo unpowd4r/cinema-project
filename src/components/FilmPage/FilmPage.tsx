@@ -1,3 +1,4 @@
+import he from 'he'
 import { useState } from 'react'
 import ReactPlayer from 'react-player'
 import { useParams } from 'react-router'
@@ -14,7 +15,7 @@ export const FilmPage = () => {
 	const { id } = useParams<{ id: string }>()
 	const filmId = Number(id)
 
-	const { data: filmData, isLoading: isFilmLoading } = useGetFilmByIdQuery({
+	const { data: filmData } = useGetFilmByIdQuery({
 		id: filmId,
 	})
 
@@ -39,22 +40,40 @@ export const FilmPage = () => {
 			<CategoriesButtons />
 
 			<div className='flex justify-center gap-24 mb-10'>
-				<div className='bg-zinc-800 h-svh w-1/3 rounded-3xl'>
+				<div className='bg-zinc-800 min-h-svh w-1/3 rounded-3xl'>
 					{isInfoLoading ? (
 						<Loader />
 					) : (
 						<img
 							src={infoData?.posterUrlPreview}
 							alt='Film Preview'
-							className='h-svh w-full object-contain rounded-3xl cursor-pointer'
+							className='min-h-svh w-full object-contain rounded-3xl cursor-pointer'
 							onClick={handleOpenModal}
 						/>
 					)}
 				</div>
-				<div className='flex items-center justify-center flex-col gap-5 bg-zinc-800 h-svh w-1/3 rounded-3xl'>
-					<div>{infoData?.description}</div>
-					<div>{infoData?.shortDescription}</div>
-					<div>{factsInfo?.items?.text}</div>
+				<div className='flex items-center justify-center flex-col gap-5 bg-zinc-800 min-h-svh w-1/3 rounded-3xl p-5'>
+					<div className='mb-5'>
+						<h1 className='font-bold mb-5'>{infoData?.nameRu}</h1>
+						{infoData?.description && (
+							<>
+								<h2 className='font-medium text-2xl mb-3'>Описание:</h2>
+								<div>{infoData?.description}</div>
+							</>
+						)}
+					</div>
+					<div>
+						{factsInfo?.items && factsInfo?.items.length > 0 && (
+							<>
+								<h3 className='font-medium text-2xl mb-3'>Факты о фильме: </h3>
+								{factsInfo?.items.map((facts, index) => (
+									<div key={index} className='mb-4 font-medium '>
+										{he.decode(facts.text.replace(/<\/?[^>]+(>|$)/g, ''))}
+									</div>
+								))}
+							</>
+						)}
+					</div>
 				</div>
 
 				{isModalOpen && (
@@ -66,14 +85,12 @@ export const FilmPage = () => {
 							>
 								X
 							</button>
-							{/* <video
-								src={filmData?.items?.[0]?.url}
+							<ReactPlayer
 								width='100%'
-								height='auto'
+								height='500px'
+								url={filmData?.items?.[0]?.url}
 								controls
-								autoPlay
-							/> */}
-							<ReactPlayer url={filmData?.items?.[0]?.url} controls />
+							/>
 						</div>
 					</div>
 				)}

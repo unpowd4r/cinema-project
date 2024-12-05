@@ -4,14 +4,14 @@ import { SkeletonCards } from '../../app/ui/Skeletons/SkeletonCards'
 import { CardFilm } from '../CardFilm/CardFilm'
 import { ErrorSnackBar } from '../ErrorSnackBar/ErrorSnackBar'
 import { CategoriesButtons } from '../FilmPage/CategoriesButtons/CategoriesButtons'
-import { useGetFilmOrCategoriesQuery } from './apiHomePage/apiHomePage'
-import { Pagination } from './Pagination/Pagination'
+import { useGetFilmOrCategoriesQuery } from '../HomePage/apiHomePage/apiHomePage'
+import { Pagination } from '../HomePage/Pagination/Pagination'
 
-export const HomePage = () => {
+export const Vampire = () => {
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const { data, isLoading, error } = useGetFilmOrCategoriesQuery({
-		type: 'TOP_POPULAR_ALL',
+		type: 'VAMPIRE_THEME',
 		page: currentPage,
 	})
 

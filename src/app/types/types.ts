@@ -20,7 +20,7 @@ type FactItem = {
 
 export type FactsResponse = {
 	total: number
-	items: FactItem
+	items: FactItem[]
 }
 
 type Response<T> = {

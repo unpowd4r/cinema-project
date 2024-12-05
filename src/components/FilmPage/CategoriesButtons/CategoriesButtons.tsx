@@ -3,7 +3,7 @@ import { ButtonCategory } from './ButtonCategory/ButtonCategory'
 
 const titlesButtons = [
 	{ id: 1, title: 'All', path: PATH.HOME_PAGE },
-	{ id: 2, title: 'Comedy', path: PATH.HOME_PAGE },
+	{ id: 2, title: 'Vampire', path: PATH.VAMPIRE_PAGE },
 	{ id: 3, title: 'Fantasy', path: PATH.HOME_PAGE },
 	{ id: 4, title: 'Drama', path: PATH.HOME_PAGE },
 	{ id: 5, title: 'History', path: PATH.HOME_PAGE },

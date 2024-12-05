@@ -16,7 +16,7 @@ export const Pagination = ({
 }: Props) => {
 	return (
 		<>
-			{isLoading && (
+			{!isLoading && (
 				<div className='flex justify-evenly mt-5 w-full'>
 					<ButtonPagination
 						page={page}
